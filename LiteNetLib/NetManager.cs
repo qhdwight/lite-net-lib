@@ -1817,5 +1817,10 @@ namespace LiteNetLib
         {
             return new NetPeerEnumerator(_headPeer);
         }
+
+        public int PeekNextId()
+        {
+            lock (_peerIds) return _peerIds.Count == 0 ? _lastPeerId + 1 : _peerIds.Peek();
+        }
     }
 }
